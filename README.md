@@ -1,19 +1,21 @@
-# Multiplayer fix for AoE 2: DE
-This script checks if ucrtbase.dll is installed for AoE2: DE then installs it if necessary. To run automatically before launching AoE, set your Steam launch options to
+# Multiplayer fix for Age of Empires II: Definitive Edition
+This script fixes multiplayer "Out of sync" error in **[Age of Empires II: Definitive Edition](https://store.steampowered.com/app/813780/Age_of_Empires_II_Definitive_Edition/)** using Proton.
+It will check if `ucrtbase.dll` is installed and installs it if necessary. Set the Steam launch options below
+to run it automatically before launching the game.
 
 ```
-location/of/script/run.sh ; %command% %steam_location%
+/path/to/script/run.sh ; %command% %steam_location%
 ```
 
-for example, if you cloned the repo to your $HOME directory,
+For example, if repo is cloned to the `$HOME/.local/share` directory, then set launch option to the following:
 
 ```
-~/proton_aoe2de_mpfix/run.sh ; %command% %steam_location%
+~/.local/share/aoe2de-proton-mpfix/run.sh ; %command% %steam_location%
 ```
 
-if %steam_location% is not set, the script will default to /home/$USER/.local/share
+If `%steam_location%` is not set, the script will default to `$HOME/.local/share`.
 
 ## Dependencies
-- cabextract
-- wget
-- jq (optional, required to automatically fetch Steam App ID)
+- **[cabextract](https://archlinux.org/packages/?name=cabextract)**: Required to extract `ucrtbase.dll` from the downloaded `vc_redist.x64.exe` file.
+- **[wget](https://archlinux.org/packages/?name=wget)**: Required for downloading `vc_redist.x64.exe` from Microsoft.
+- **[jq](https://archlinux.org/packages/?name=jq)**: Required to automatically fetch Steam App ID (Optional).
